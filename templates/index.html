@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seed Phrase Permutations</title>
+</head>
+<body>
+    <h1>Seed Phrase Permutations</h1>
+    <form method="post">
+        {% for i in range(1, 13) %}
+            <label for="word{{i}}">Word {{i}}:</label>
+            <input type="text" id="word{{i}}" name="word{{i}}">
+            <br>
+        {% endfor %}
+        <button type="submit">Generate Permutations</button>
+    </form>
+    {% if permutations %}
+        <h2>Generated Permutations:</h2>
+        <ul>
+        {% for permutation in permutations %}
+            <li>{{ permutation | join(', ') }}</li>
+        {% endfor %}
+        </ul>
+        <a href="/download?file_path={{ file_path }}">Download Permutations</a>
+    {% endif %}
+</body>
+</html>
